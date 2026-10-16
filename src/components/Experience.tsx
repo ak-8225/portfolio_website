@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Award, ExternalLink, GraduationCap } from "lucide-react";
 import { education, experience } from "@/data/resumeData";
@@ -28,9 +29,17 @@ export function Experience() {
                 className="glass relative rounded-2xl p-5 sm:p-6"
               >
                 <div className="flex gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent/10 font-display text-sm font-bold tracking-tight text-accent">
-                    {job.company.startsWith("Leap") ? "LEAP" : "ICAR"}
-                  </div>
+                  {job.logoUrl ? (
+                    <div className="flex h-10 w-14 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-card-border/70 bg-white/85 p-1.5 opacity-85">
+                      <Image
+                        src={job.logoUrl}
+                        alt={`${job.company} logo`}
+                        width={112}
+                        height={64}
+                        className="h-auto w-auto max-h-full max-w-full object-contain"
+                      />
+                    </div>
+                  ) : null}
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-start justify-between gap-2">
                       <div>
@@ -103,19 +112,65 @@ export function Experience() {
                 className="glass rounded-2xl p-5 sm:p-6"
               >
                 <div className="flex items-start gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-surface text-accent">
-                    <GraduationCap className="h-4 w-4" />
-                  </div>
-                  <div>
+                  {edu.logoUrl ? (
+                    <div className="flex h-10 w-14 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-card-border/70 bg-white/85 p-1 opacity-85">
+                      <Image
+                        src={edu.logoUrl}
+                        alt={`${edu.school} logo`}
+                        width={112}
+                        height={64}
+                        className="h-auto w-auto max-h-full max-w-full object-contain"
+                      />
+                    </div>
+                  ) : (
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-surface text-accent">
+                      <GraduationCap className="h-4 w-4" />
+                    </div>
+                  )}
+                  <div className="min-w-0 flex-1">
                     <p className="font-mono text-[11px] text-muted">{edu.period}</p>
                     <h4 className="mt-1 font-display text-base font-semibold text-foreground">
-                      {edu.school}
+                      {edu.schoolUrl ? (
+                        <a
+                          href={edu.schoolUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 transition hover:text-accent"
+                        >
+                          {edu.school}
+                          <ExternalLink className="h-3 w-3 shrink-0 text-muted" />
+                        </a>
+                      ) : (
+                        edu.school
+                      )}
                     </h4>
                     <p className="mt-1 text-sm text-muted">{edu.degree}</p>
                     <p className="mt-2 text-xs text-accent">
                       {edu.location}
                       {edu.detail ? ` · ${edu.detail}` : ""}
                     </p>
+                    {edu.credentialUrl ? (
+                      <a
+                        href={edu.credentialUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group mt-4 block max-w-sm overflow-hidden rounded-xl border border-card-border/70 bg-surface/70 transition hover:border-accent/40"
+                      >
+                        <div className="relative aspect-[1.46] overflow-hidden">
+                          <Image
+                            src={edu.credentialUrl}
+                            alt={`${edu.school} provisional degree certificate`}
+                            fill
+                            sizes="(max-width: 1024px) 80vw, 320px"
+                            className="object-cover object-top opacity-85 transition group-hover:opacity-100"
+                          />
+                        </div>
+                        <span className="flex items-center justify-between gap-2 px-3 py-2 text-xs font-medium text-muted transition group-hover:text-accent">
+                          View provisional degree
+                          <ExternalLink className="h-3 w-3 shrink-0" />
+                        </span>
+                      </a>
+                    ) : null}
                   </div>
                 </div>
               </motion.div>

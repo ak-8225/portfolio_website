@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   Activity,
@@ -52,60 +53,79 @@ export function Projects() {
                       ? "bg-gradient-to-br from-slate-950 via-sky-950 to-teal-950"
                       : "bg-gradient-to-br from-rose-950 via-purple-950 to-slate-950"
               }`}>
-                <div className="absolute inset-0 grid-overlay opacity-30" />
-                <div className="absolute -top-16 -right-10 h-48 w-48 rounded-full bg-white/10 blur-3xl transition duration-500 group-hover:scale-125" />
-                <div className="relative flex w-full max-w-sm items-center gap-4">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-white/15 bg-white/10 text-white shadow-lg backdrop-blur">
-                    {(() => {
-                      const Icon = visualIcons[project.visual];
-                      return <Icon className="h-7 w-7" />;
-                    })()}
-                  </div>
-                  <div className="min-w-0 flex-1 rounded-2xl border border-white/15 bg-slate-950/45 p-4 text-white shadow-2xl backdrop-blur-md">
-                    <div className="mb-3 flex items-center justify-between gap-2">
-                      <span className="truncate text-xs font-medium text-white/80">
-                        {project.tagline}
-                      </span>
-                      <Sparkles className="h-3.5 w-3.5 shrink-0 text-white/70" />
+                {project.imageUrl ? (
+                  <>
+                    <Image
+                      src={project.imageUrl}
+                      alt={`${project.title} project preview`}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover transition duration-700 group-hover:scale-[1.03]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-slate-950/55 via-slate-950/10 to-slate-950/20" />
+                    <div className="absolute inset-0 grid-overlay opacity-20" />
+                    <span className="absolute right-4 bottom-4 rounded-lg border border-white/20 bg-slate-950/65 px-3 py-1.5 text-xs font-medium text-white backdrop-blur">
+                      {project.tagline}
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <div className="absolute inset-0 grid-overlay opacity-30" />
+                    <div className="absolute -top-16 -right-10 h-48 w-48 rounded-full bg-white/10 blur-3xl transition duration-500 group-hover:scale-125" />
+                    <div className="relative flex w-full max-w-sm items-center gap-4">
+                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-white/15 bg-white/10 text-white shadow-lg backdrop-blur">
+                        {(() => {
+                          const Icon = visualIcons[project.visual];
+                          return <Icon className="h-7 w-7" />;
+                        })()}
+                      </div>
+                      <div className="min-w-0 flex-1 rounded-2xl border border-white/15 bg-slate-950/45 p-4 text-white shadow-2xl backdrop-blur-md">
+                        <div className="mb-3 flex items-center justify-between gap-2">
+                          <span className="truncate text-xs font-medium text-white/80">
+                            {project.tagline}
+                          </span>
+                          <Sparkles className="h-3.5 w-3.5 shrink-0 text-white/70" />
+                        </div>
+                        {project.visual === "discovery" ? (
+                          <div className="flex flex-wrap gap-2">
+                            {["Chennai", "Local finds", "Explore"].map((label) => (
+                              <span key={label} className="rounded-lg bg-white/10 px-2.5 py-1.5 text-[11px] text-white/85">
+                                {label}
+                              </span>
+                            ))}
+                          </div>
+                        ) : project.visual === "security" ? (
+                          <div className="flex items-center gap-2">
+                            {["Breach check", "Risk score", "Facial MFA"].map((label) => (
+                              <span key={label} className="rounded-lg bg-white/10 px-2 py-1.5 text-[10px] text-white/85">
+                                {label}
+                              </span>
+                            ))}
+                          </div>
+                        ) : project.visual === "posture" ? (
+                          <div>
+                            <div className="mb-2 flex justify-between text-[11px] text-white/75">
+                              <span>Posture classifier</span>
+                              <span>92% accuracy</span>
+                            </div>
+                            <div className="h-1.5 overflow-hidden rounded-full bg-white/15">
+                              <div className="h-full w-[92%] rounded-full bg-cyan-300" />
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="space-y-2 text-[11px]">
+                            <p className="ml-auto w-fit rounded-xl rounded-br-sm bg-fuchsia-400/20 px-3 py-2 text-white/90">
+                              Check in with me
+                            </p>
+                            <p className="w-fit rounded-xl rounded-bl-sm bg-white/10 px-3 py-2 text-white/75">
+                              I&apos;m here to listen.
+                            </p>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                    {project.visual === "discovery" ? (
-                      <div className="flex flex-wrap gap-2">
-                        {["Chennai", "Local finds", "Explore"].map((label) => (
-                          <span key={label} className="rounded-lg bg-white/10 px-2.5 py-1.5 text-[11px] text-white/85">
-                            {label}
-                          </span>
-                        ))}
-                      </div>
-                    ) : project.visual === "security" ? (
-                      <div className="flex items-center gap-2">
-                        {["Breach check", "Risk score", "Facial MFA"].map((label) => (
-                          <span key={label} className="rounded-lg bg-white/10 px-2 py-1.5 text-[10px] text-white/85">
-                            {label}
-                          </span>
-                        ))}
-                      </div>
-                    ) : project.visual === "posture" ? (
-                      <div>
-                        <div className="mb-2 flex justify-between text-[11px] text-white/75">
-                          <span>Posture classifier</span>
-                          <span>92% accuracy</span>
-                        </div>
-                        <div className="h-1.5 overflow-hidden rounded-full bg-white/15">
-                          <div className="h-full w-[92%] rounded-full bg-cyan-300" />
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="space-y-2 text-[11px]">
-                        <p className="ml-auto w-fit rounded-xl rounded-br-sm bg-fuchsia-400/20 px-3 py-2 text-white/90">
-                          Check in with me
-                        </p>
-                        <p className="w-fit rounded-xl rounded-bl-sm bg-white/10 px-3 py-2 text-white/75">
-                          I&apos;m here to listen.
-                        </p>
-                      </div>
-                    )}
-                  </div>
-                </div>
+                  </>
+                )}
                 {project.featured ? (
                   <span className="absolute top-4 left-4 rounded-full border border-white/20 bg-slate-950/45 px-3 py-1 text-[10px] font-semibold tracking-[0.12em] text-white uppercase backdrop-blur">
                     Featured

@@ -1,24 +1,16 @@
 "use client";
 
+import Image from "next/image";
 import { FormEvent, useState } from "react";
 import { motion } from "framer-motion";
-import {
-  AtSign,
-  GitBranch,
-  Link2,
-  Mail,
-  MapPin,
-  Phone,
-  Send,
-} from "lucide-react";
+import { Mail, MapPin, Phone, Send } from "lucide-react";
 import { contactInfo, socialLinks } from "@/data/resumeData";
 import { SectionHeading } from "./SectionHeading";
 
-const socialIcons = {
-  GitHub: GitBranch,
-  LinkedIn: Link2,
-  Instagram: AtSign,
-  Email: Mail,
+const socialLogos: Record<string, string> = {
+  GitHub: "/assets/github.svg",
+  LinkedIn: "/assets/linkedin.svg",
+  Instagram: "/assets/instagram.svg",
 };
 
 export function Contact() {
@@ -90,11 +82,9 @@ export function Contact() {
                 </p>
               </div>
             </div>
-
             <div className="flex flex-wrap gap-2 pt-2">
               {socialLinks.map((link) => {
-                const Icon =
-                  socialIcons[link.name as keyof typeof socialIcons] || Mail;
+                const logo = socialLogos[link.name];
                 return (
                   <a
                     key={link.name}
@@ -102,9 +92,21 @@ export function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={link.label}
-                    className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-card-border bg-card text-foreground transition hover:border-accent/40 hover:text-accent"
+                    className={`inline-flex h-11 w-11 items-center justify-center rounded-xl border border-card-border text-foreground transition hover:border-accent/40 hover:text-accent ${
+                      logo ? "bg-white" : "bg-card"
+                    }`}
                   >
-                    <Icon className="h-4 w-4" />
+                    {logo ? (
+                      <Image
+                        src={logo}
+                        alt=""
+                        width={19}
+                        height={19}
+                        className="h-[19px] w-[19px] object-contain"
+                      />
+                    ) : (
+                      <Mail className="h-4 w-4" />
+                    )}
                   </a>
                 );
               })}

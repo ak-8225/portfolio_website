@@ -27,6 +27,17 @@ export function Certifications() {
             const Icon = iconMap[item.type];
             const content = (
               <>
+                {item.logoUrl ? (
+                  <div className="mb-4 flex h-8 max-w-28 items-center justify-start rounded-md border border-card-border/60 bg-white/85 px-2 opacity-85">
+                    <Image
+                      src={item.logoUrl}
+                      alt={`${item.issuer} logo`}
+                      width={112}
+                      height={40}
+                      className="h-auto w-auto max-h-8 max-w-full object-contain"
+                    />
+                  </div>
+                ) : null}
                 {item.imageUrl ? (
                   <div className="relative mb-4 flex h-40 items-center justify-center overflow-hidden rounded-xl bg-white p-2">
                     <Image
@@ -38,9 +49,11 @@ export function Certifications() {
                     />
                   </div>
                 ) : null}
-                <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent">
-                  <Icon className="h-5 w-5" />
-                </div>
+                {!item.logoUrl ? (
+                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                ) : null}
                 <h3 className="font-display text-base font-semibold text-foreground">
                   {item.title}
                 </h3>

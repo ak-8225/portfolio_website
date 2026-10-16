@@ -100,17 +100,17 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.96, y: 14 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.12 }}
-            className="relative order-1 mx-auto w-full max-w-[19rem] md:order-2 md:max-w-[25rem]"
+            className="relative order-1 mx-auto w-full max-w-[19rem] md:order-2 md:max-w-[23rem]"
           >
             <div className="absolute -inset-3 -rotate-3 rounded-[2rem] border border-accent/20 bg-accent/[0.06]" />
-            <div className="relative aspect-square overflow-hidden rounded-[1.7rem] border border-card-border bg-surface shadow-[0_28px_90px_var(--glow)]">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[1.7rem] border border-card-border bg-surface shadow-[0_28px_90px_var(--glow)]">
               <Image
                 src={siteConfig.profileImage}
                 alt={`${siteConfig.name}, AI and product builder`}
                 fill
                 priority
-                sizes="(max-width: 768px) 78vw, 400px"
-                className="object-cover object-top"
+                sizes="(max-width: 768px) 78vw, 368px"
+                className="object-cover object-[center_30%]"
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/35 via-transparent to-transparent" />
             </div>
@@ -123,16 +123,25 @@ export function Hero() {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-2 gap-2 border-t border-card-border/80 pt-5 sm:grid-cols-4 sm:gap-4 sm:pt-6">
+        <div className="grid grid-cols-2 gap-2 border-t border-card-border/80 pt-5 sm:grid-cols-4 sm:gap-3 sm:pt-6">
           {metrics.map((metric, i) => (
             <motion.div
               key={metric.label}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.36 + i * 0.06 }}
-              className="rounded-xl bg-card/55 px-3 py-3 backdrop-blur-sm sm:px-4"
+              className="flex min-h-24 flex-col justify-center rounded-xl bg-card/55 px-3 py-3 backdrop-blur-sm sm:px-3"
             >
-              <p className="font-display text-xl font-semibold tracking-tight text-accent sm:text-2xl">
+              {metric.logoUrl ? (
+                <Image
+                  src={metric.logoUrl}
+                  alt=""
+                  width={88}
+                  height={28}
+                  className="mb-2 h-5 w-auto max-w-20 object-contain object-left opacity-80"
+                />
+              ) : null}
+              <p className="font-display text-lg leading-tight font-semibold tracking-tight text-accent sm:text-xl">
                 {metric.value}
               </p>
               <p className="mt-1 text-[11px] leading-snug text-muted sm:text-xs">

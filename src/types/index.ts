@@ -12,6 +12,7 @@ export type SocialLink = {
 export type Metric = {
   value: string;
   label: string;
+  logoUrl?: string;
 };
 
 export type SkillCategory = {
@@ -25,6 +26,7 @@ export type Project = {
   description: string;
   tech: string[];
   visual: "discovery" | "security" | "posture" | "wellbeing";
+  imageUrl?: string;
   featured?: boolean;
   liveUrl?: string;
   githubUrl?: string;
@@ -38,6 +40,7 @@ export type ExperienceItem = {
   location?: string;
   companyUrl?: string;
   certificateUrl?: string;
+  logoUrl?: string;
   highlights: string[];
 };
 
@@ -47,6 +50,9 @@ export type EducationItem = {
   period: string;
   location: string;
   detail?: string;
+  logoUrl?: string;
+  schoolUrl?: string;
+  credentialUrl?: string;
 };
 
 export type Certification = {
@@ -54,6 +60,7 @@ export type Certification = {
   issuer: string;
   url?: string;
   imageUrl?: string;
+  logoUrl?: string;
   type: "certificate" | "achievement" | "publication";
 };
 

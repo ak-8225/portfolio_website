@@ -16,7 +16,7 @@ export const siteConfig = {
   tagline: "I ship AI products that move real metrics.",
   bio: "MS (AI & Business Analytics) student and former Program Associate, building AI products from an early pilot to company-wide use.",
   resumeUrl: "/assets/Akshay_Kumar_Resume.pdf",
-  profileImage: "/assets/profile-portrait.png",
+  profileImage: "/assets/profile-speaking.png",
   coverImage: "/assets/cover.png",
   location: "Gwalior, India",
 };
@@ -63,14 +63,22 @@ export const contactInfo: ContactInfo = {
 export const metrics: Metric[] = [
   { value: "2% → 30%", label: "Video counselling engagement" },
   { value: "19% → 52%", label: "Session attendance" },
-  { value: "2", label: "IEEE research publications" },
-  { value: "Top 24", label: "Barclays Hack-O-Hire · 6,000+" },
+  {
+    value: "Ex Program Associate",
+    label: "Leap Scholar",
+    logoUrl: "/assets/leap-scholar-logo.png",
+  },
+  {
+    value: "Finalist",
+    label: "Barclays Hack-O-Hire · 6,000+",
+    logoUrl: "/assets/barclays-logo.png",
+  },
 ];
 
 export const aboutHighlights = [
   "AI tooling from a 40-person pilot to a company-wide daily product.",
   "Four workflow automation bots, built and shipped across counselling operations.",
-  "Innofusion winner · Barclays Top 24 · IEEE research author.",
+  "Innofusion winner · Barclays Hack-O-Hire finalist · IEEE research author.",
 ];
 
 export const skillCategories: SkillCategory[] = [
@@ -120,6 +128,7 @@ export const projects: Project[] = [
     tagline: "Local discovery platform",
     description: "Discover independent local places, starting with Chennai.",
     tech: ["Next.js", "Supabase", "Firebase", "Sentence-BERT"],
+    imageUrl: "/assets/hidden-gems-project.png",
     liveUrl: "https://hidden-gems-new.vercel.app/login",
     award: "IEEE SPICES 2026 (accepted)",
     visual: "discovery",
@@ -130,6 +139,7 @@ export const projects: Project[] = [
     tagline: "Barclays Hack-O-Hire finalist",
     description: "A password risk tool with breach checks, facial MFA, and GenAI feedback.",
     tech: ["ML", "Facial MFA", "GenAI"],
+    imageUrl: "/assets/breach-ai-project.png",
     liveUrl: "https://barclays-hackathon.vercel.app/",
     githubUrl: "https://github.com/ak-8225/my-hack-o-hire",
     award: "Finalist · Top 24 / 6000+",
@@ -159,6 +169,7 @@ export const experience: ExperienceItem[] = [
     role: "Program Associate",
     period: "Jun 2025 – Jun 2026",
     location: "Product operations · AI tooling",
+    logoUrl: "/assets/leap-scholar-logo.png",
     companyUrl: "https://leapscholar.com/",
     certificateUrl: "/assets/cert-leap.png",
     highlights: [
@@ -172,6 +183,8 @@ export const experience: ExperienceItem[] = [
     role: "Machine Learning Intern",
     period: "June 2024",
     location: "Computer vision · Research",
+    logoUrl: "/assets/icar-iasri-logo.png",
+    companyUrl: "https://www.iasri.res.in/",
     certificateUrl: "/assets/cert-iasri.png",
     highlights: [
       "Built a plant-disease CNN reaching 91% accuracy across crop datasets.",
@@ -187,6 +200,8 @@ export const education: EducationItem[] = [
     period: "2026 – Present",
     location: "Gwalior, India",
     detail: "Institute of National Importance",
+    logoUrl: "/assets/abv-iiitm-logo.png",
+    schoolUrl: "https://www.iiitm.ac.in/",
   },
   {
     school: "SRM Institute of Science and Technology",
@@ -194,6 +209,9 @@ export const education: EducationItem[] = [
     period: "2022 – 2026",
     location: "Chennai, India",
     detail: "CGPA: 8.9/10",
+    logoUrl: "/assets/srm-logo.png",
+    schoolUrl: "https://www.srmist.edu.in/",
+    credentialUrl: "/assets/srm-provisional-degree.png",
   },
 ];
 
@@ -203,6 +221,7 @@ export const certifications: Certification[] = [
     issuer: "Microsoft",
     url: "https://drive.google.com/file/d/1qdOryby3lBdI29s2QZaejpnvUkhJiS6h/view?pli=1",
     imageUrl: "/assets/cert-azure.png",
+    logoUrl: "/assets/microsoft-logo.png",
     type: "certificate",
   },
   {
@@ -210,6 +229,7 @@ export const certifications: Certification[] = [
     issuer: "Leap Scholar",
     url: "https://drive.google.com/file/d/1CthE3fgkjGnAm31da8kUPeb4nPJaEHXa/view?pli=1",
     imageUrl: "/assets/cert-leap.png",
+    logoUrl: "/assets/leap-scholar-logo.png",
     type: "certificate",
   },
   {
@@ -217,6 +237,7 @@ export const certifications: Certification[] = [
     issuer: "IASRI / ICAR",
     url: "https://drive.google.com/file/d/1j9ungyKgNBBGJXMV2_TN9fpSf7aLNwQC/view?pli=1",
     imageUrl: "/assets/cert-iasri.png",
+    logoUrl: "/assets/icar-iasri-logo.png",
     type: "certificate",
   },
   {
@@ -227,6 +248,7 @@ export const certifications: Certification[] = [
   {
     title: "Finalist · Barclays Hack-O-Hire 2025",
     issuer: "Top 24 / 6000+",
+    logoUrl: "/assets/barclays-logo.png",
     type: "achievement",
   },
   {
@@ -238,6 +260,7 @@ export const certifications: Certification[] = [
     title: "Credit Card Fraud Detection with Explainable AI",
     issuer: "IEEE-sponsored ICDSBS 2025, SRMIST",
     url: "https://www.researchgate.net/publication/392884577_Enhancing_Credit_Card_Fraud_Detection_with_Explainable_AI_and_Model_Comparison",
+    logoUrl: "/assets/ieee-logo.png",
     type: "publication",
   },
 ];

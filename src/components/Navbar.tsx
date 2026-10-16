@@ -69,7 +69,13 @@ export function Navbar() {
           </a>
           <button
             type="button"
-            aria-label="Toggle theme"
+            aria-label={
+              mounted
+                ? resolvedTheme === "dark"
+                  ? "Switch to light theme"
+                  : "Switch to dark theme"
+                : "Toggle color theme"
+            }
             onClick={() =>
               setTheme(resolvedTheme === "dark" ? "light" : "dark")
             }
