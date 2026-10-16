@@ -1,0 +1,19 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run portfolio locally",
+			"type": "shell",
+			"command": "npm.cmd",
+			"args": [
+				"run",
+				"dev"
+			],
+			"isBackground": true,
+			"problemMatcher": [
+				"$next-watch"
+			],
+			"group": "build"
+		}
+	]
+}
